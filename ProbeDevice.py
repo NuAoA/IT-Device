@@ -28,7 +28,8 @@ class Probe(object):
 		elif (ButtonNum == GPIOInterface.PIN_RED):
 			self.current_packet.set_output_state(2,True)
 		elif (ButtonNum == GPIOInterface.PIN_BLUE):
-			self.current_packet.set_output_state(3,True)
+			pass;
+			#self.current_packet.set_output_state(3,True)
 			
 			
 	def button_released(self, ButtonNum):
@@ -39,7 +40,7 @@ class Probe(object):
 		elif (ButtonNum == GPIOInterface.PIN_RED):
 			self.current_packet.set_output_state(2,False)
 		elif (ButtonNum == GPIOInterface.PIN_BLUE):
-			self.current_packet.set_output_state(3,False)
+			#self.current_packet.set_output_state(3,False)
 			self.acquire_image() #THREAD THIS, causes missed events
 			
 		
