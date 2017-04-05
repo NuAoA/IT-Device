@@ -34,6 +34,9 @@ class Packet(object):
 	def is_packet_server(self):
 		return self.status>>3
 		
+	def set_tool_id(self,ID):
+		self.toolID = ID
+		
 	def set_battery_level(self,battery_state):
 		#set the batter level bits to the correct values
 		if (battery_state > 15 or battery_state < 0):
