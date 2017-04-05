@@ -19,13 +19,7 @@ class Packet(object):
 		self.inputBits = 0b0000000000000000
 		self.outputBits = 0b0000000000000000
 		self.ImageID = 0b00000000000000000000000000000000
-		self.status = 0b1111
-		self.battery_status = 0b1111
-		self.deviceID = 0b11111110
-		self.toolID = 0b11111111
-		self.inputBits = 0b1111111111111111
-		self.outputBits = 0b1111111111111111
-		self.ImageID = 0b11111111111111111111111111111111
+
 	def deconstruct_packet(self,packet_data):
 		try:
 			statusByte,self.deviceID,self.toolID,self.inputBits,self.outputBits,self.ImageID = struct.unpack("<BBBHHI",packet_data)
@@ -69,7 +63,7 @@ class Packet(object):
 			return
 		self.ImageID = ID
 		
-	def get_packet(self):
+	def pack(self):
 		#return the packet as required for tcp/ip communication	
 		statusByte = (self.status<<4) | (self.battery_status)
 		return struct.pack("<BBBHHI",statusByte,self.deviceID,self.toolID,self.inputBits,self.outputBits,self.ImageID)
